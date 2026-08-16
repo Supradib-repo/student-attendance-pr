@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+ <html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='f.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+</head>
+
+<body>
+   <nav>
+     <input type="checkbox" id="sidebar-check">
+    <label  class="active-btn" for="sidebar-check" 0><svg class="btn" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></label>
+
+    
+    
+    <div class="links-container">
+    <label class="close-btn" for="sidebar-check" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></label>
+    
+        <a  class="home" href="/">Home</a>
+        <a class="dash" href="{{url_for('dashboard')}}">Dashboard</a>
+    
+    </div>
+
+   </nav>
+    <div class="wrapper">
+        <div class="form-box">
+            <form id="form-id" name="myform" method="post" action="/submit">
+               <div class="attendance-heading"> <h1 >Attendance-form</h1></div>
+                <div class="input-label">
+
+
+                    <i class="bi bi-person-fill"></i>
+
+                    <input name="username" id="name" type="text" placeholder="enter the full name" required>
+                </div><span id="name-err"></span>
+                <div class="input-label">
+
+
+                    <i class="bi bi-pen-fill"></i>
+
+                    <input name="roll" id="roll" type="text" placeholder="enter your roll number" required>
+                </div><span id="rollno-err"></span>
+                <div class="input-label">
+
+
+                    <i class="bi bi-pen-fill"></i>
+
+                    <input name="depart" id="departement" type="text" placeholder="enter your departement" required>
+                </div><span id="dep-err"></span>
+                <div class="input-label">
+
+
+                    <i class="bi bi-journal-bookmark-fill"></i>
+
+                    <input id="date" name="dates" type="date" placeholder="enter the current date" required>
+                </div><span id="date-err"></span>
+
+
+
+
+
+
+                <div id="selection" >
+                    <i id ="hand" class="bi bi-person-raised-hand"></i>
+                    <select name="statuses" id="status" required>
+                        <option>Absent</option>
+                        <option>present</option>
+
+                    </select>
+                </div>
+
+
+
+
+                <div class="button-style">
+                    <button>Submit</button>
+                </div>
+
+
+
+
+
+            </form>
+        </div>
+        
+     
+    </div>
+
+
+    </div>
+
+   
+
+    <script>
+        function seterror(id,error){
+            var getid=document.getElementById(id)
+            getid.innerHTML=error
+
+
+        }
+
+        function validate_form(){
+            var allow=true;
+            var name=document.forms["myform"]["username"].value
+            if (name.length<5){
+                seterror("name-err","this name is too short")
+                allow=false;
+            }
+            return allow;
+
+        }
+    </script>
+
+</body>
+
+</html>
